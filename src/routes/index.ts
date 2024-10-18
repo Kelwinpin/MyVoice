@@ -1,13 +1,13 @@
 import express from 'express';
-import kidRoutes from './kidRoutes';
 
-class Router {
-    kids = kidRoutes;
+const routes = express();
 
-    listen = () => {
-        const routes = express();
-        routes.use('/kids', kidRoutes);
-    }
-};
+routes.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 
-export default Router;
+routes.post('/', (req, res) => {
+  res.send('POST');
+});
+
+export default routes;

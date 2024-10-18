@@ -20,5 +20,8 @@
     "sourceMap": true                   // Gera arquivos de source map para facilitar a depuração.
   },
   "include": ["src/**/*.ts"],            // Inclui todos os arquivos TypeScript na pasta src.
-  "exclude": ["node_modules", "build"]   // Exclui as pastas node_modules e build.
+  "exclude": ["node_modules", "build"],   // Exclui as pastas node_modules e build.
+  "ts-node": {
+    "esm": true
+  }
 }
