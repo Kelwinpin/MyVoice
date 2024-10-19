@@ -17,6 +17,18 @@ class KidController {
         });
     }
 
+    getKidByParent = async (req: any, res: any) => {
+        await KidModel.findAll({
+            where: {
+                parentId: req.params.parentId,
+            },
+        }).then((kids) => {
+            return res.status(200).json(kids);
+        }).catch((err) => {
+            return res.status(500).json(err);
+        });
+    }
+
     createKid = async (req: any, res: any) => {        
         await KidModel.create({...req.body, createdAt: new Date()}).then((kid) => {
             return res.status(201).json(kid);
