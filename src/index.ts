@@ -8,7 +8,6 @@ routes.listen(3000, () => {
 try {
   await db.authenticate();
   console.log('Connection has been established successfully.');
-  // Sincronizar banco de dados (caso necessário)
   db.sync({ force: false }).then(() => {
       console.log("Banco de dados sincronizado.");
   });
