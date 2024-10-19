@@ -40,12 +40,13 @@ KidModel.init({
 
 
 KidModel.belongsTo(ParentsModel, {
-    foreignKey: "parentId", 
-    targetKey: "id"
+    foreignKey: "parentId", // FK em 'kid'
+    targetKey: "id", // Chave alvo em 'ParentsModel'
 });
 
+
 ParentsModel.hasMany(KidModel, {
-    foreignKey: "parentId",
+    foreignKey: "parentId", // Mesma FK usada no 'KidModel'
 });
 
 export default KidModel;

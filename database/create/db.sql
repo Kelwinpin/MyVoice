@@ -31,7 +31,6 @@ CREATE TABLE kid_activity (
 
 CREATE TABLE activityType (
   id SERIAL PRIMARY KEY,
-  activity_id INTEGER,
   name VARCHAR(255),
   CONSTRAINT fk_activity_type FOREIGN KEY (activity_id) REFERENCES activities (id)
 );
