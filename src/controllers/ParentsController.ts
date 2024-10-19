@@ -1,5 +1,4 @@
 import ParentsModel from "../database/models/parentsModel.js";
-import { Request, Response } from "express";
 
 class ParentsController {
     getParents = async (req: any, res: any) => {
