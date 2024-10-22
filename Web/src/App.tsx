@@ -1,10 +1,17 @@
 import './App.css'
+import Register from './modules/register'
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <>
-      <h1>Hello World!</h1>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <Register controller='TCC'/>
+    </QueryClientProvider>
   )
 }
 
