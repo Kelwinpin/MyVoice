@@ -10,7 +10,7 @@ const queryClient = new QueryClient()
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Register controller='TCC'/>
+      <Register />
     </QueryClientProvider>
   )
 }

@@ -9,13 +9,9 @@ import activityTypeSchema from "@/schemas/IActivityType";
 import { useMutation } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/hooks/use-toast";
-
-interface RegisterProps {
-    controller: string;   
-}
   
 
-export default function Register({controller = "TCC"}: RegisterProps) {
+export default function Register() {
     const form = useForm<z.infer<typeof activityTypeSchema>>({
         defaultValues: {},
         resolver: zodResolver(activityTypeSchema),
@@ -61,7 +57,7 @@ export default function Register({controller = "TCC"}: RegisterProps) {
 
     return (
         <Div>
-            <h1>Registro de {controller.toUpperCase()}</h1>
+            <h1>Registro de Tipos de Atividades</h1>
             <Form {...form}>
                 <StyledForm onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                     <FormField
