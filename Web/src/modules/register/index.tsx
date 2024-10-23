@@ -11,18 +11,13 @@ import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/hooks/use-toast";
   
 
-export default function Register() {
+export default function Register({ onClose }: { onClose: () => void }) {
     const form = useForm<z.infer<typeof activityTypeSchema>>({
         defaultValues: {},
         resolver: zodResolver(activityTypeSchema),
     });
 
     const { toast } = useToast()
-
-
-    // const query = useQuery({ queryKey: ['activityTypes'], queryFn: () => fetch(`http://localhost:3000/activityTypes`)
-    //     .then(res => res.json())
-    // })
 
     const mutation = useMutation({
         mutationFn: () => fetch(`http://localhost:3000/activityTypes`, {
@@ -40,6 +35,7 @@ export default function Register() {
                 title: "Success",
                 description: "Activity Type created successfully",
             })
+            setTimeout(() => onClose(), 1000)
         },
         onError: (error) => {
             toast({
@@ -57,7 +53,6 @@ export default function Register() {
 
     return (
         <Div>
-            <h1>Registro de Tipos de Atividades</h1>
             <Form {...form}>
                 <StyledForm onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                     <FormField

@@ -6,8 +6,8 @@ import {
   RouterProvider,
 } from "react-router-dom"
 import Layout from './components/hand/Sidebar';
-import Register from './modules/register/index.tsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import ActivityTypes from './modules/register/activityTypes/index.tsx';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/activityTypes/register",
-    element: <Register />,
+    element: <ActivityTypes />,
   },
 ]);
 
