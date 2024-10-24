@@ -11,7 +11,7 @@ import ActivityTypes from './modules/register/activityTypes/index.tsx';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/home",
     element: <h1>Home</h1>,
   },
   {

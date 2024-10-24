@@ -9,6 +9,7 @@ import activityTypeSchema from "@/schemas/IActivityType";
 import { useMutation } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/hooks/use-toast";
+import { useEffect, useRef } from "react";
   
 
 export default function Register({ onClose }: { onClose: () => void }) {
@@ -52,11 +53,25 @@ export default function Register({ onClose }: { onClose: () => void }) {
     const onSubmit = () => {
         mutation.mutate();
     }
+    const modalRef = useRef<HTMLFormElement | null>(null);
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+          if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+            onClose();
+          }
+        }
+    
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [modalRef]);
 
     return (
         <Div>
             <Form {...form}>
-                <StyledForm onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <StyledForm onSubmit={form.handleSubmit(onSubmit)} className="space-y-8" ref={modalRef}>
                     <FormField
                         control={form.control}
                         name="name"
