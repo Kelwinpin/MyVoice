@@ -36,6 +36,18 @@ class ActivityTypeController {
             return res.status(500).json(err);
         });
     }
+
+    deleteActivityType = async (req: any, res: any) => {
+        await ActivityTypeModel.destroy({
+            where: {
+                id: req.params.id,
+            },
+        }).then((activityType) => {
+            return res.status(200).json(activityType);
+        }).catch((err) => {
+            return res.status(500).json(err);
+        });
+    }
 }
 
 export default new ActivityTypeController();

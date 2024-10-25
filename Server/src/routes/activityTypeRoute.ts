@@ -9,5 +9,6 @@ activitiesTypesRoute.get('/', ActivityTypeController.getActivityTypes);
 activitiesTypesRoute.get('/:id', ActivityTypeController.getActivityType);
 activitiesTypesRoute.post('/', ActivityTypeController.createActivityType);
 activitiesTypesRoute.put('/:id', ActivityTypeController.updateActivityType);
+activitiesTypesRoute.delete('/:id', ActivityTypeController.deleteActivityType);
 
 export default activitiesTypesRoute;
