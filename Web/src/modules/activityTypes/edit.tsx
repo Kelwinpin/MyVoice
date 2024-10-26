@@ -75,7 +75,7 @@ export default function Edit({ onClose, data }: { onClose: () => void, data: IAc
 
     useEffect(() => {
         form.setValue('name', data.name)
-    }, [])
+    })
 
     return (
         <Div>

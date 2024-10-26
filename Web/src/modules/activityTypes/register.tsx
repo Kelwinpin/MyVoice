@@ -35,9 +35,9 @@ export default function Register({ onClose }: { onClose: () => void }) {
                 variant: "success",
                 title: "Success",
                 description: "Activity Type created successfully",
-                duration: 1000
+                duration: 2000
             })
-            setTimeout(() => onClose(), 2000)
+            setTimeout(() => onClose(), 1000)
             form.reset()
         },
         onError: (error) => {

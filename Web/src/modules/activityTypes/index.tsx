@@ -117,7 +117,7 @@ export default function ActivityTypes() {
         {query.isFetched &&
         <>
           <DataTable columns={columns} data={query.data || []} />
-          {visible && <Register onClose={()=> setVisible(false)} />}
+          {visible && <Register onClose={()=> {setVisible(false); query.refetch()}} />}
         </>}
         {!query.isFetched && <div>Carregando...</div>}
     </div>
