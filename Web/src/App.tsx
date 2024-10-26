@@ -1,10 +1,9 @@
 import './App.css'
-import Register from './modules/register'
 
 
 function App() {
   return (
-      <Register />
+      <h1>Home</h1>
   )
 }
 

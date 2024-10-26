@@ -1,5 +1,4 @@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import {Div, StyledForm} from "./styles";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,6 +9,7 @@ import { useMutation } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/hooks/use-toast";
 import { useEffect, useRef } from "react";
+import { Div, StyledForm } from "./styles";
   
 
 export default function Register({ onClose }: { onClose: () => void }) {

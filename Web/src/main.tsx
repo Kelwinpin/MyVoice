@@ -7,7 +7,7 @@ import {
 } from "react-router-dom"
 import Layout from './components/hand/Sidebar';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import ActivityTypes from './modules/register/activityTypes/index.tsx';
+import ActivityTypes from './modules/activityTypes/index.tsx';
 
 const router = createBrowserRouter([
   {

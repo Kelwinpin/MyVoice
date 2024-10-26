@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useState } from "react";
-import Register from "..";
+import Register from "./register";
 import { Dialog } from "@/components/hand/Dialog";
 import { useToast } from "@/hooks/use-toast";
 
