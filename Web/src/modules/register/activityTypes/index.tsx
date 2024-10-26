@@ -56,12 +56,6 @@ export default function ActivityTypes() {
                       },
                   }).then(res => res.json()),
                   onSuccess: () => {
-                      toast({
-                          variant: "success",
-                          title: "Success",
-                          description: "Activity Type deleted successfully",
-                          duration: 3000
-                      })
                       query.refetch()
                       setTimeout(() => setVisible(false), 2000)
                   },
@@ -115,8 +109,12 @@ export default function ActivityTypes() {
             <CirclePlusIcon className="h-4 w-4" />
             Adicionar
         </Button>
-        <DataTable columns={columns} data={query.data || []} />
-        {visible && <Register onClose={()=> setVisible(false)} />}
+        {query.isFetched &&
+        <>
+          <DataTable columns={columns} data={query.data || []} />
+          {visible && <Register onClose={()=> setVisible(false)} />}
+        </>}
+        {!query.isFetched && <div>Carregando...</div>}
     </div>
     )
 }
