@@ -14,6 +14,7 @@ import { useState } from "react";
 import Register from "./register";
 import { Dialog } from "@/components/hand/Dialog";
 import { useToast } from "@/hooks/use-toast";
+import Edit from "./edit";
 
 interface IActivityType {
   id: number
@@ -45,6 +46,7 @@ export default function ActivityTypes() {
             cell: ({row}) => {    
 
               const [visible, setVisible] = useState(false)
+              const [visibleEdit, setVisibleEdit] = useState(false)
 
               const { toast } = useToast()
 
@@ -77,7 +79,7 @@ export default function ActivityTypes() {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="start">
-                      <DropdownMenuItem className="cursor-pointer">
+                      <DropdownMenuItem className="cursor-pointer" onClick={() => setVisibleEdit(true)}>
                           <Pencil className="h-4 w-4" color="blue" /> Editar
                       </DropdownMenuItem>
                       <DropdownMenuItem className="cursor-pointer" onClick={() => setVisible(true)}>
@@ -96,6 +98,9 @@ export default function ActivityTypes() {
                     showTrigger={false}
                     onCancel={() => setVisible(false)}
                   />
+                  {
+                    visibleEdit && <Edit onClose={()=> setVisibleEdit(false)} data={row.original} />
+                  }
                 </>
               )
             },
