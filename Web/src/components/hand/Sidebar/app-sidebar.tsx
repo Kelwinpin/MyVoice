@@ -30,7 +30,7 @@ const items = [
   },
   {
     title: "Criancas",
-    url: "#",
+    url: "/kids",
     icon: Puzzle,
   },
   {

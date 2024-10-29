@@ -3,7 +3,8 @@
 import { z } from "zod"
  
 const kidSchema = z.object({
-  username: z.string().min(2).max(50),
+  gender: z.string().min(2).max(50),
+  parentId: z.number().or(z.string()),
 })
 
 

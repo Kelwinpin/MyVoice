@@ -9,6 +9,7 @@ import Layout from './components/hand/Sidebar';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ActivityTypes from './modules/activityTypes/index.tsx';
 import Parents from './modules/parents/index.tsx';
+import Kids from './modules/kids/index.tsx';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,11 @@ const router = createBrowserRouter([
   {
     path: "/parents",
     element: <Parents />,
-  }
+  },
+  {
+    path: "/kids",
+    element: <Kids />,
+  },
 
 ]);
 

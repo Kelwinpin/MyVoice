@@ -3,7 +3,18 @@ import ParentsModel from "../database/models/parentsModel.js";
 
 class KidController {
     getKids = async (req: any, res: any) => {
-        await KidModel.findAll().then((kids) => {
+        await KidModel.findAll({
+            attributes: {
+                exclude: ["createdAt", "updatedAt", "parentId"],
+            },
+            include: [{
+                model: ParentsModel,
+                attributes: {
+                    exclude: ["createdAt", "updatedAt"],
+                },
+                as: "parent",
+            }],
+        }).then((kids) => {
             return res.status(200).json(kids);
         }).catch((err) => {
             return res.status(500).json(err);
