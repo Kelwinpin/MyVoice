@@ -8,16 +8,22 @@ import {
 import Layout from './components/hand/Sidebar';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ActivityTypes from './modules/activityTypes/index.tsx';
+import Parents from './modules/parents/index.tsx';
 
 const router = createBrowserRouter([
   {
-    path: "/home",
+    path: "",
     element: <h1>Home</h1>,
   },
   {
-    path: "/activityTypes/register",
+    path: "/activityTypes",
     element: <ActivityTypes />,
   },
+  {
+    path: "/parents",
+    element: <Parents />,
+  }
+
 ]);
 
 const queryClient = new QueryClient()

@@ -4,35 +4,31 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
-import activityTypeSchema from "@/schemas/IActivityType";
 import { useMutation } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/hooks/use-toast";
 import { useEffect, useRef } from "react";
 import { Div, StyledForm } from "../styles";
+import parentSchema from "@/schemas/IParent";
+  
 
-interface IActivityType {
-  id: number
-  name: string
-}
-
-
-export default function Edit({ onClose, data }: { onClose: () => void, data: IActivityType }) {
-    const form = useForm<z.infer<typeof activityTypeSchema>>({
+export default function Register({ onClose }: { onClose: () => void }) {
+    const form = useForm<z.infer<typeof parentSchema>>({
         defaultValues: {},
-        resolver: zodResolver(activityTypeSchema),
+        resolver: zodResolver(parentSchema),
     });
 
-    const { toast } = useToast();
+    const { toast } = useToast()
 
     const mutation = useMutation({
-        mutationFn: () => fetch(`http://localhost:3000/activityTypes/${data.id}`, {
-            method: 'PUT',
+        mutationFn: () => fetch(`http://localhost:3000/parents`, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                name: form.watch('name')
+                userName: form.watch('userName'),
+                role: form.watch('role')
             })
         }).then(res => res.json()),
         onSuccess: () => {
@@ -40,9 +36,9 @@ export default function Edit({ onClose, data }: { onClose: () => void, data: IAc
                 variant: "success",
                 title: "Success",
                 description: "Activity Type created successfully",
-                duration: 1000
+                duration: 2000
             })
-            setTimeout(() => onClose(), 2000)
+            setTimeout(() => onClose(), 1000)
             form.reset()
         },
         onError: (error) => {
@@ -54,10 +50,10 @@ export default function Edit({ onClose, data }: { onClose: () => void, data: IAc
         }
     })
 
+
     const onSubmit = () => {
         mutation.mutate();
     }
-
     const modalRef = useRef<HTMLFormElement | null>(null);
 
     useEffect(() => {
@@ -73,22 +69,31 @@ export default function Edit({ onClose, data }: { onClose: () => void, data: IAc
         };
     }, [modalRef]);
 
-    useEffect(() => {
-        form.setValue('name', data.name)
-    })
-
     return (
         <Div>
             <Form {...form}>
                 <StyledForm onSubmit={form.handleSubmit(onSubmit)} className="space-y-8" ref={modalRef}>
                     <FormField
                         control={form.control}
-                        name="name"
+                        name="userName"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Nome da Atividade</FormLabel>
                                 <FormControl>
                                     <Input placeholder="Nome" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                     <FormField
+                        control={form.control}
+                        name="role"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Nome da Atividade</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Papel" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>

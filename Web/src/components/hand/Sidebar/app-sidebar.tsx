@@ -20,12 +20,12 @@ const items = [
   },
   {
     title: "Tipos de atividade",
-    url: "/activityTypes/register",
+    url: "/activityTypes",
     icon: Star,
   },
   {
     title: "Pais",
-    url: "#",
+    url: "/parents",
     icon: User,
   },
   {

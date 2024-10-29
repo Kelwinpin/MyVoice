@@ -9,7 +9,7 @@ import { useMutation } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/hooks/use-toast";
 import { useEffect, useRef } from "react";
-import { Div, StyledForm } from "./styles";
+import { Div, StyledForm } from "../styles";
   
 
 export default function Register({ onClose }: { onClose: () => void }) {
