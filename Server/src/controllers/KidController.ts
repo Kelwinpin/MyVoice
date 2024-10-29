@@ -1,4 +1,5 @@
 import KidModel from "../database/models/kidModel.js";
+import ParentsModel from "../database/models/parentsModel.js";
 
 class KidController {
     getKids = async (req: any, res: any) => {
@@ -10,7 +11,21 @@ class KidController {
     }
 
     getKid = async (req: any, res: any) => {
-        await KidModel.findByPk(req.params.id).then((kid) => {
+        await KidModel.findOne({
+            where: {
+                id: req.params.id,
+            },
+            attributes: {
+                exclude: ["createdAt", "updatedAt", "parentId"],
+            },
+            include: [{
+                model: ParentsModel,
+                attributes: {
+                    exclude: ["createdAt", "updatedAt"],
+                },
+                as: "parent",
+            }],
+        }).then((kid) => {
             return res.status(200).json(kid);
         }).catch((err) => {
             return res.status(500).json(err);
