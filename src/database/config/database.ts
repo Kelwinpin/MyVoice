@@ -9,6 +9,7 @@ const db = new Sequelize(process.env.DB || "", process.env.DB_USER || "", proces
     port: Number(process.env.DB_PORT) || 5432,
     dialect: 'postgres',
     logging: false,
+    protocol: 'postgres',
     pool: {
         max: 5,
         min: 0,
