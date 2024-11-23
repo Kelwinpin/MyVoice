@@ -2,6 +2,9 @@ import express from "express";
 import db from "./database/config/database.js";
 import routes from "./routes/index.js";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -15,8 +18,10 @@ app.use(cors({
 // Use the routes
 app.use(routes);
 
+const port = process.env.PORT || 3000;
+
 // Start the server
-app.listen(3000, () => {
+app.listen(Number(port), "0.0.0.0" ,() => {
   console.log("Server is running on port 3000");
 });
 
