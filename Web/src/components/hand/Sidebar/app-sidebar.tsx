@@ -35,7 +35,7 @@ const items = [
   },
   {
     title: "Atividades",
-    url: "#",
+    url: "/activity",
     icon: Drama,
   },
 ]

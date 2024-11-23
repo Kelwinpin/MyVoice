@@ -9,6 +9,7 @@ class ActivitiesModel extends Model implements IActivity {
     type!: number;
     description!: string;
     sound!: string;
+    subType!: number;
     createdAt!: Date;
 }
 
@@ -32,6 +33,11 @@ ActivitiesModel.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
+    subType: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        field: "sub_type",
+    },
     sound: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -46,6 +52,11 @@ ActivitiesModel.init({
 
 ActivitiesModel.belongsTo(ActivityTypeModel, {
     foreignKey: "type",
+    targetKey: "id"
+});
+
+ActivitiesModel.belongsTo(ActivityTypeModel, {
+    foreignKey: "subType",
     targetKey: "id"
 });
 

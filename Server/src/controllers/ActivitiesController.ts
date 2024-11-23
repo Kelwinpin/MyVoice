@@ -21,6 +21,18 @@ class ActivitiesController {
         });
     }
 
+    getActivityBySubType = async (req: any, res: any) => {
+        await ActivitiesModel.findAll({
+            where: {
+                subType: req.params.subTypeId,
+            },
+        }).then((activities) => {
+            return res.status(200).json(activities);
+        }).catch((err) => {
+            return res.status(500).json(err);
+        });
+    }
+
     getActivity = async (req: any, res: any) => {
         await ActivitiesModel.findByPk(req.params.id).then((activity) => {
             return res.status(200).json(activity);

@@ -1,7 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import IActivityType from "../../interfaces/IActivityType.js";
 import db from "../config/database.js";
-import ActivitiesModel from "./activitiesModel.js";
 
 class ActivityTypeModel extends Model implements IActivityType {
     id!: number;
