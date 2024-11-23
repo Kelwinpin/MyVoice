@@ -1,27 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES2022",                // Compila para uma versão que o Node 20 suporta.
-    "module": "NodeNext",                 // Usa ES Modules para compatibilidade com ESM.
-    "moduleResolution": "NodeNext",     // Configura a resolução de módulos ESM.
-    "outDir": "./build",                // Diretório de saída para os arquivos compilados.
-    "rootDir": "./src",                 // Diretório raiz do seu código TypeScript.
-    "esModuleInterop": true,            // Facilita a interoperabilidade entre ES Modules e CommonJS.
-    "forceConsistentCasingInFileNames": true, // Evita problemas de case-sensitive em caminhos.
-    "strict": true,                     // Ativa todas as verificações de tipo estritas.
-    "skipLibCheck": true,               // Ignora a verificação de arquivos .d.ts para reduzir o tempo de build.
-    "resolveJsonModule": true,          // Permite a importação de arquivos JSON.
-    "noImplicitAny": true,              // Exige a declaração explícita de tipos.
-    "isolatedModules": true,            // Necessário para suporte ao ESM.
-    "allowSyntheticDefaultImports": true, // Permite importações padrão de módulos CommonJS.
-    "types": ["node"],                  // Inclui os tipos para Node.js.
-    "lib": ["ES2022"],                  // Biblioteca padrão com recursos atualizados.
-    "declaration": true,                // Gera arquivos .d.ts para facilitar a reutilização de tipos.
-    "declarationMap": true,             // Mapeia declarações para facilitar o debug.
-    "sourceMap": true                   // Gera arquivos de source map para facilitar a depuração.
+    "module": "ESNext",
+    "target": "ES2020",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*.ts"],            // Inclui todos os arquivos TypeScript na pasta src.
-  "exclude": ["node_modules", "build"],   // Exclui as pastas node_modules e build.
-  "ts-node": {
-    "esm": true
-  }
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "build"]
 }
