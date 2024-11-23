@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "outDir": "./build",        // Diretório onde os arquivos compilados serão colocados
+    "rootDir": "./src",         // Diretório raiz para os arquivos TypeScript
     "module": "ESNext",
     "target": "ES2020",
     "moduleResolution": "node",
